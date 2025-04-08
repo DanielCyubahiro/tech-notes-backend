@@ -1,4 +1,7 @@
 import mongoose, {Schema} from 'mongoose';
+import mongoose_sequence from 'mongoose-sequence';
+
+const AutoIncrement = mongoose_sequence(mongoose);
 
 const noteSchema = new Schema(
     {
@@ -22,7 +25,13 @@ const noteSchema = new Schema(
     },
     {
       timestamps: true,
-    }
+    },
 );
+
+noteSchema.plugin(AutoIncrement, {
+  inc_field: 'ticket',
+  id: 'ticketNums',
+  start_seq: 500,
+});
 
 export default mongoose.model('Note', noteSchema);
