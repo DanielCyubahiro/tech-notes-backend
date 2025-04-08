@@ -88,8 +88,8 @@ const deleteNote = async (req, res, next) => {
   let note = await Note.findByIdAndDelete(req.params.id);
   if (!note) return next(new ApiError(404, 'Note not found'));
   return res.json(new ApiResponse(
-      200,
-      note,
+      204,
+      null,
       'Note deleted successfully',
   ));
 };
