@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import 'dotenv/config';
 import requestLogger from './config/logger.js';
 import {errorHandler, notFound} from './middlewares/error.middleware.js';
+import {noteRoutes, userRoutes} from './routes/index.js';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')));
 
 // Routes
+app.use('/notes', noteRoutes);
+app.use('/users', userRoutes);
 app.use(notFound);
 
 app.use(errorHandler);
