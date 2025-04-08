@@ -1,3 +1,3 @@
 import noteRoutes from './note.routes.js'
-
-export {noteRoutes};
+import userRoutes from './user.routes.js'
+export {noteRoutes, userRoutes};

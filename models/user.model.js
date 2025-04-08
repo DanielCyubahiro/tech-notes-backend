@@ -3,14 +3,17 @@ import mongoose, {Schema} from 'mongoose';
 const userSchema = new Schema(
     {
       username: {
-        type: String, required: true,
+        type: String,
+        required: true,
       },
       password: {
-        type: String, required: true,
+        type: String,
+        required: true,
       },
       roles: [
         {
-          type: String, default: 'Employee',
+          type: String,
+          default: 'Employee',
         },
       ],
       isActive: {
@@ -20,7 +23,7 @@ const userSchema = new Schema(
     },
     {
       timestamps: true,
-    }
+    },
 );
 
 export default mongoose.model('User', userSchema);
